@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twilio Message Sender</title>
+</head>
+<body>
+    <h1>Send Message via Twilio</h1>
+    <form action="{{ url_for('send_message') }}" method="post">
+        <button type="submit" name="action" value="on">ON Hotspot</button>
+        <button type="submit" name="action" value="off">OFF Hotspot</button>
+    </form>
+</body>
+</html>
