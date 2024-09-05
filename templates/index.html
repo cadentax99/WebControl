@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Twilio Message Sender</title>
+    <!-- Corrected Google Fonts URL for Material Symbols -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <!-- Add Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .element {
+            position: relative; /* Set relative positioning to the element container */
             background: rgba(255, 255, 255, 0.25);
             box-shadow: 0 8px 32px 0 rgb(55 55 55 / 37%);
             backdrop-filter: blur(4px);
@@ -21,12 +25,22 @@
         button {
             background: #434242; /* Matches the web background */
             color: hsl(0 0% 90%);
-            padding: 15px 25px; /* Added more padding to the button */
             border: 1px solid rgba(255, 255, 255, 0.18); /* Border color same as box */
-            border-radius: 8px;
+            border-radius: 50%; /* Makes the button circular */
             cursor: pointer;
             box-shadow: inset -5px -5px 9px rgb(75 73 73 / 37%), inset 5px 5px 9px rgb(0 0 0 / 30%);
-            margin-top: 12px; /* Added margin to the button */
+            width: 35px; /* Increased button size (circular) */
+            height: 35px; /* Increased button size (circular) */
+            display: flex; 
+            align-items: center; 
+            justify-content: center; /* Center the icon inside the button */
+            position: absolute; /* Absolute positioning for the button */
+            top: 10px; /* Adjust positioning to the top */
+            right: 10px; /* Adjust positioning to the right */
+        }
+
+        button i {
+            font-size: 17px; /* Increased play icon font size */
         }
 
         .icon-container {
@@ -36,12 +50,17 @@
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            margin-right: 10px; 
+            margin-right: 10px;
             margin-top: 0px; /* Added margin to the icon */
         }
 
         .icon {
             color: #fbfbfa; /* Set icon color to white */
+        }
+
+        .title {
+            margin: 0; /* Removes default margin */
+            margin-top: 10px; /* Space above the title */
         }
     </style>
 </head>
@@ -55,11 +74,13 @@
             <div class="icon-container" style="background-color: #519dc9;">
                 <span class="material-symbols-outlined">wifi_tethering</span>
             </div>
-            <!-- Title -->
-            <h2 style="margin: 0;">ON Hotspot</h2>
         </div>
+        <!-- Title moved to the next line -->
+        <h2 class="title">ON Hotspot</h2>
         <form action="{{ url_for('send_message') }}" method="post">
-            <button type="submit" name="action" value="on">Turn ON</button>
+            <button type="submit" name="action" value="on">
+                <i class="fa-solid fa-play"></i> <!-- Replaced text with Font Awesome icon -->
+            </button>
         </form>
     </div>
 
@@ -70,13 +91,14 @@
             <div class="icon-container" style="background-color: #6a76c7;">
                 <span class="material-symbols-outlined">wifi_tethering_off</span>
             </div>
-            <!-- Title -->
-            <h2 style="margin: 0;">OFF Hotspot</h2>
         </div>
+        <!-- Title moved to the next line -->
+        <h2 class="title">OFF Hotspot</h2>
         <form action="{{ url_for('send_message') }}" method="post">
-            <button type="submit" name="action" value="off">Turn OFF</button>
+            <button type="submit" name="action" value="off">
+                <i class="fa-solid fa-play"></i> <!-- Replaced text with Font Awesome icon -->
+            </button>
         </form>
     </div>
 </body>
 </html>
-
