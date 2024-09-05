@@ -9,17 +9,24 @@
     <!-- Add Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+            gap: 2%; /* Adds a 2% gap between the two boxes */
+            margin: 20px auto;
+            width: 90%; /* Overall container width */
+        }
+
         .element {
-            position: relative; /* Set relative positioning to the element container */
             background: rgba(255, 255, 255, 0.25);
             box-shadow: 0 8px 32px 0 rgb(55 55 55 / 37%);
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.18);
-            width: 85%; /* Increased width */
-            margin: 20px auto; /* Center align with auto margin */
+            width: 48%; /* Each box takes up 48% of the container width */
             padding: 13px;
+            position: relative; /* Set relative positioning to the element container */
         }
 
         button {
@@ -61,44 +68,48 @@
         .title {
             margin: 0; /* Removes default margin */
             margin-top: 10px; /* Space above the title */
+            font-size: 15px;
         }
     </style>
 </head>
 <body style="background-color: #1b1b1b; color: hsl(0 0% 90%); font-family: system-ui;">
     <h1 style="color: hsl(0 0% 95%); text-align: center;">Modes and Routines</h1>
     
-    <!-- ON Hotspot Box -->
-    <div class="element">
-        <div style="display: flex; align-items: center;">
-            <!-- Circular Icon in Top Left Inside Box -->
-            <div class="icon-container" style="background-color: #519dc9;">
-                <span class="material-symbols-outlined">wifi_tethering</span>
+    <!-- Flex container to hold both boxes side by side -->
+    <div class="container">
+        <!-- ON Hotspot Box -->
+        <div class="element">
+            <div style="display: flex; align-items: center;">
+                <!-- Circular Icon in Top Left Inside Box -->
+                <div class="icon-container" style="background-color: #519dc9;">
+                    <span class="material-symbols-outlined">wifi_tethering</span>
+                </div>
             </div>
+            <!-- Title moved to the next line -->
+            <h2 class="title">ON Hotspot</h2>
+            <form action="{{ url_for('send_message') }}" method="post">
+                <button type="submit" name="action" value="on">
+                    <i class="fa-solid fa-play"></i> <!-- Replaced text with Font Awesome icon -->
+                </button>
+            </form>
         </div>
-        <!-- Title moved to the next line -->
-        <h2 class="title">ON Hotspot</h2>
-        <form action="{{ url_for('send_message') }}" method="post">
-            <button type="submit" name="action" value="on">
-                <i class="fa-solid fa-play"></i> <!-- Replaced text with Font Awesome icon -->
-            </button>
-        </form>
-    </div>
 
-    <!-- OFF Hotspot Box -->
-    <div class="element">
-        <div style="display: flex; align-items: center;">
-            <!-- Circular Icon in Top Left Inside Box -->
-            <div class="icon-container" style="background-color: #6a76c7;">
-                <span class="material-symbols-outlined">wifi_tethering_off</span>
+        <!-- OFF Hotspot Box -->
+        <div class="element">
+            <div style="display: flex; align-items: center;">
+                <!-- Circular Icon in Top Left Inside Box -->
+                <div class="icon-container" style="background-color: #6a76c7;">
+                    <span class="material-symbols-outlined">wifi_tethering_off</span>
+                </div>
             </div>
+            <!-- Title moved to the next line -->
+            <h2 class="title">OFF Hotspot</h2>
+            <form action="{{ url_for('send_message') }}" method="post">
+                <button type="submit" name="action" value="off">
+                    <i class="fa-solid fa-play"></i> <!-- Replaced text with Font Awesome icon -->
+                </button>
+            </form>
         </div>
-        <!-- Title moved to the next line -->
-        <h2 class="title">OFF Hotspot</h2>
-        <form action="{{ url_for('send_message') }}" method="post">
-            <button type="submit" name="action" value="off">
-                <i class="fa-solid fa-play"></i> <!-- Replaced text with Font Awesome icon -->
-            </button>
-        </form>
     </div>
 </body>
 </html>
